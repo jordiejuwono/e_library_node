@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class mata_pelajaran_bab extends Model {
+  class bab_progress extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,17 +11,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      mata_pelajaran_bab.belongsTo(models.mata_pelajaran, {foreignKey: "mata_pelajaran_id"});
-      mata_pelajaran_bab.belongsTo(models.bab, {foreignKey: "bab_id"});
+      bab_progress.belongsTo(models.bab, {
+        foreignKey: "bab_progress_id",
+        as: "bab",
+      })
     }
   }
-  mata_pelajaran_bab.init({
+  bab_progress.init({
+    user_id: DataTypes.INTEGER,
     bab_id: DataTypes.INTEGER,
-    mata_pelajaran_id: DataTypes.INTEGER
+    progress: DataTypes.DECIMAL
   }, {
     sequelize,
-    modelName: 'mata_pelajaran_bab',
+    modelName: 'bab_progress',
     underscored: true,
   });
-  return mata_pelajaran_bab;
+  return bab_progress;
 };

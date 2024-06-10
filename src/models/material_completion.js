@@ -11,6 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      material_completion.belongsTo(models.material,{
+        foreignKey: "material_completion_id",
+        as: "materials",
+      });
     }
   }
   material_completion.init({

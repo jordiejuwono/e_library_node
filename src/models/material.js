@@ -11,6 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      material.hasOne(models.material_completion,{
+        foreignKey: "material_id",
+        as: "is_complete",
+      });
+      material.hasMany(models.material, {
+        through: models.subbab_material,
+        foreignKey: "material_id",
+        as: "materials",
+      });
     }
   }
   material.init({

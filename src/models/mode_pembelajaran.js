@@ -11,6 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      mode_pembelajaran.hasOne(models.kelas, {
+        through: models.kelas_mode_pembelajaran,
+        foreignKey: "mode_pembelajaran_id",
+        as: "kelas",
+      });
     }
   }
   mode_pembelajaran.init({
