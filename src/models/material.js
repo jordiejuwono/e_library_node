@@ -15,11 +15,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "material_id",
         as: "is_complete",
       });
-      material.hasMany(models.material, {
-        through: models.subbab_material,
-        foreignKey: "material_id",
-        as: "materials",
-      });
+      // material.hasMany(models.material, {
+      //   through: models.subbab_material,
+      //   foreignKey: "material_id",
+      //   as: "materials",
+      // });
     }
   }
   material.init({
